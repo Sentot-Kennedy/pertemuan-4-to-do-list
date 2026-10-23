@@ -1,0 +1,175 @@
+:root {
+  --latar: #dfe6f0;
+  --kartu: #ffffff;
+  --tinta: #1d2433;
+  --redup: #66708a;
+  --garis: #d3dae6;
+  --stabilo: #ffe45c;
+  --tinggi: #d94141;
+  --sedang: #e08e0b;
+  --rendah: #2f9468;
+  --fokus: #2457d6;
+  --font-judul: "Bricolage Grotesque", "Segoe UI", sans-serif;
+  --font-isi: "Instrument Sans", "Segoe UI", sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--latar);
+  color: var(--tinta);
+  font-family: var(--font-isi);
+  line-height: 1.5;
+}
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap;
+}
+
+.halaman { max-width: 640px; margin: 0 auto; padding: 40px 18px 64px; }
+
+.kepala { margin-bottom: 24px; }
+.kepala h1 {
+  margin: 0;
+  font-family: var(--font-judul);
+  font-weight: 800;
+  font-size: clamp(2.4rem, 8vw, 3.4rem);
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+.tanggal { margin: 6px 0 0; color: var(--redup); }
+
+/* ---------- Form ---------- */
+.form, .daftar-wrap {
+  background: var(--kartu);
+  border-radius: 10px;
+  padding: 18px;
+}
+.form { margin-bottom: 18px; }
+
+input, select {
+  width: 100%;
+  padding: 10px 12px;
+  font: inherit;
+  color: inherit;
+  background: #fff;
+  border: 1.5px solid var(--garis);
+  border-radius: 6px;
+}
+#teks { font-size: 1.05rem; padding: 12px 14px; }
+
+label { display: block; margin-bottom: 4px; font-size: 0.85rem; font-weight: 600; }
+
+.form-bawah {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 12px;
+}
+.form-bawah .tombol { grid-column: 1 / -1; }
+@media (min-width: 560px) {
+  .form-bawah { grid-template-columns: 1fr 1.3fr auto; align-items: end; }
+  .form-bawah .tombol { grid-column: auto; }
+}
+
+.pesan { min-height: 1.4em; margin: 10px 0 0; font-size: 0.85rem; color: var(--tinggi); }
+
+button { font: inherit; cursor: pointer; }
+.tombol {
+  padding: 10px 18px;
+  font-weight: 600;
+  color: #fff;
+  background: var(--tinta);
+  border: 0;
+  border-radius: 6px;
+}
+.tombol:hover { background: #000; }
+
+input:focus-visible, select:focus-visible, button:focus-visible {
+  outline: 3px solid var(--fokus);
+  outline-offset: 1px;
+}
+
+/* ---------- Filter ---------- */
+.filter { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+.filter button {
+  padding: 6px 14px;
+  font-size: 0.9rem;
+  color: var(--redup);
+  background: transparent;
+  border: 1.5px solid var(--garis);
+  border-radius: 999px;
+}
+.filter button[aria-pressed="true"] {
+  color: var(--tinta);
+  font-weight: 600;
+  background: var(--stabilo);
+  border-color: var(--stabilo);
+}
+
+/* ---------- Daftar ---------- */
+.daftar { list-style: none; margin: 0; padding: 0; }
+
+.tugas {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 0;
+  border-top: 1px solid var(--garis);
+  border-left: 4px solid var(--sedang);
+  padding-left: 12px;
+}
+.tugas.tinggi { border-left-color: var(--tinggi); }
+.tugas.sedang { border-left-color: var(--sedang); }
+.tugas.rendah { border-left-color: var(--rendah); }
+
+.tugas input[type="checkbox"] {
+  width: 22px; height: 22px; margin-top: 2px; flex: none; accent-color: var(--tinta);
+}
+
+.isi { flex: 1; min-width: 0; }
+.teks { overflow-wrap: anywhere; }
+.tugas.selesai .teks {
+  color: var(--redup);
+  text-decoration: line-through;
+  background: linear-gradient(transparent 40%, var(--stabilo) 40% 78%, transparent 78%);
+}
+
+.meta { margin-top: 2px; font-size: 0.8rem; color: var(--redup); }
+.meta .terlambat { color: var(--tinggi); font-weight: 600; }
+
+.edit-input { padding: 6px 10px; }
+
+.aksi { display: flex; gap: 4px; flex: none; }
+.aksi button {
+  padding: 4px 8px;
+  font-size: 0.8rem;
+  color: var(--redup);
+  background: transparent;
+  border: 0;
+  border-radius: 4px;
+}
+.aksi button:hover { color: var(--tinta); background: var(--latar); }
+.aksi .hapus:hover { color: var(--tinggi); }
+
+.kosong { margin: 18px 0 8px; text-align: center; color: var(--redup); }
+
+.kaki {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--garis);
+  font-size: 0.85rem;
+  color: var(--redup);
+}
+.tautan { padding: 0; color: var(--redup); background: none; border: 0; text-decoration: underline; }
+.tautan:hover { color: var(--tinggi); }
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}

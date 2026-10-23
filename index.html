@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tugasku – To-Do List</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="halaman">
+    <header class="kepala">
+      <h1>To-Do List</h1>
+      <p id="tanggal" class="tanggal"></p>
+    </header>
+
+    <form id="form" class="form" autocomplete="off">
+      <label for="teks" class="sr-only">Tugas baru</label>
+      <input id="teks" type="text" maxlength="100" placeholder="Apa yang harus dikerjakan?">
+
+      <div class="form-bawah">
+        <div>
+          <label for="prioritas">Prioritas</label>
+          <select id="prioritas">
+            <option value="tinggi">Tinggi</option>
+            <option value="sedang" selected>Sedang</option>
+            <option value="rendah">Rendah</option>
+          </select>
+        </div>
+        <div>
+          <label for="tenggat">Tenggat (opsional)</label>
+          <input id="tenggat" type="date">
+        </div>
+        <button type="submit" class="tombol">Tambah tugas</button>
+      </div>
+      <p id="pesan" class="pesan" role="alert" aria-live="polite"></p>
+    </form>
+
+    <section class="daftar-wrap" aria-label="Daftar tugas">
+      <div class="filter" role="group" aria-label="Filter tugas">
+        <button type="button" data-filter="semua" aria-pressed="true">Semua</button>
+        <button type="button" data-filter="belum" aria-pressed="false">Belum selesai</button>
+        <button type="button" data-filter="selesai" aria-pressed="false">Selesai</button>
+      </div>
+
+      <ul id="daftar" class="daftar"></ul>
+      <p id="kosong" class="kosong" hidden></p>
+
+      <footer class="kaki">
+        <span id="hitung"></span>
+        <button type="button" id="hapus-selesai" class="tautan">Hapus yang selesai</button>
+      </footer>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
